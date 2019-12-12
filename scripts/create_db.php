@@ -12,5 +12,6 @@ try {
   echo "Create kit_web_application successfully!";
 } catch (PDOException $e) {
   echo $e;
+  die();
 }
 ?>
