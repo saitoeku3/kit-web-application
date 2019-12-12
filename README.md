@@ -1,11 +1,18 @@
 # kit-web-application
 
-## Docs
+## Reqirements
 
-https://hackmd.io/t3cugRP1Q0-utlpXAbbcUQ
+- xampp
 
-## Develop
+## Development
 
 ```bash
-$ php scripts/create_database.php # create database
+$ git clone https://github.com/saitoeku3/kit-web-application.git
+$ cd kit-web-application
+$ vi dbconfig.json # Input root and password like dbconfig.sample.json
+$ make create && make migrate # Create and migrate database
 ```
+
+## Idea
+
+https://hackmd.io/t3cugRP1Q0-utlpXAbbcUQ
