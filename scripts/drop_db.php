@@ -1,5 +1,5 @@
 <?
-require dirname(__FILE__) . "/../db/connect.php";
+require dirname(__FILE__) . "/../database/connect.php";
 
 try {
   $db = connect_db();

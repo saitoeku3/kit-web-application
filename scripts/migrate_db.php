@@ -1,6 +1,6 @@
 <?
-require dirname(__FILE__) . "/../db/connect.php";
-require dirname(__FILE__) . "/../db/scheme.php";
+require dirname(__FILE__) . "/../database/connect.php";
+require dirname(__FILE__) . "/../database/scheme.php";
 
 try {
   $db = connect_db();
