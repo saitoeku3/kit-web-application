@@ -1,6 +1,4 @@
 <?
-require __DIR__ . "/../views/layouts/template.php";
-
 class RootController {
   public function index() {
     $title = "トップ";
