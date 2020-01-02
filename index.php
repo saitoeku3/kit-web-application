@@ -3,6 +3,7 @@ require __DIR__ . '/./vendor/autoload.php';
 require __DIR__ . '/./app/controllers/CartController.php';
 require __DIR__ . '/./app/controllers/RootController.php';
 require __DIR__ . '/./app/controllers/RegistrationController.php';
+require __DIR__ . "/./app/views/layouts/template.php";
 
 $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
