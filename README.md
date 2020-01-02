@@ -1,6 +1,6 @@
 # kit-web-application
 
-## Reqirements
+## Requirements
 
 - xampp
 
