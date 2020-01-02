@@ -1,5 +1,5 @@
-<h2>新規登録</h2>
-<form style="margin-top: 32px;">
+<h2 style="margin-bottom: 32px;">新規登録</h2>
+<form>
   <div class="form-group">
     <label for="" style="margin: auto 0;">氏名</label>
     <div style="display: flex; justify-content: space-between; width: 100%;">

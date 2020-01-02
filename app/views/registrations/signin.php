@@ -1,4 +1,4 @@
-<h2>ログイン</h2>
+<h2 style="margin-bottom: 32px;">ログイン</h2>
 <form>
   <div class="form-group">
     <label for="exampleInputEmail1">メールアドレス</label>
