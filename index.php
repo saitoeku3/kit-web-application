@@ -9,7 +9,7 @@ $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
 $router->map('GET', '/',       'RootController#index');
 $router->map('GET', '/signup', 'RegistrationController#signup');
-$router->map('GET', '/signin', 'RegistrationController#signup');
+$router->map('GET', '/signin', 'RegistrationController#signin');
 $router->map('GET', '/carts',  'CartController#index');
 $match = $router->match();
 

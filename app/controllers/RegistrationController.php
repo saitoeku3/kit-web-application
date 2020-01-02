@@ -1,6 +1,9 @@
 <?
 class RegistrationController {
   public function signin() {
+    $title = "ログイン";
+    $body = file_get_contents(__DIR__ . '/../views/registrations/signin.php');
+    echo template($title, $body);
   }
 
   public function signup() {
