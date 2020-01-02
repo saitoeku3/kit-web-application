@@ -1,10 +1,15 @@
 <?
 require __DIR__ . '/./vendor/autoload.php';
+require __DIR__ . '/./app/controllers/CartController.php';
 require __DIR__ . '/./app/controllers/RootController.php';
+require __DIR__ . '/./app/controllers/RegistrationController.php';
 
 $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
-$router->map('GET', '/', 'RootController#index', 'index');
+$router->map('GET', '/',       'RootController#index');
+$router->map('GET', '/signup', 'RegistrationController#signup');
+$router->map('GET', '/signin', 'RegistrationController#signup');
+$router->map('GET', '/carts',  'CartController#index');
 $match = $router->match();
 
 list( $controller, $action ) = explode( '#', $match['target'] );

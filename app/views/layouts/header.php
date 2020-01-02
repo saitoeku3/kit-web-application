@@ -6,17 +6,17 @@
   </form>
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="#" style="color: #fff;">
+      <a class="nav-link" href="/kit-web-application/signup" style="color: #fff;">
         新規登録
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" style="color: #fff;">
+      <a class="nav-link" href="/kit-web-application/signin" style="color: #fff;">
         ログイン
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#" style="color: #fff;">
+      <a class="nav-link" href="/kit-web-application/carts" style="color: #fff;">
         カート
         <i class="fas fa-shopping-cart"></i>
       </a>
