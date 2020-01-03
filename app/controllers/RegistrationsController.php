@@ -6,7 +6,7 @@ class RegistrationsController extends ApplicationController{
   public function new() {
     $title = "新規登録";
     $body = __DIR__ . '/../views/registrations/new.php';
-    echo template($title, $body);
+    echo view($title, $body);
   }
 
   public function create() {
@@ -19,12 +19,12 @@ class RegistrationsController extends ApplicationController{
       !isset($_POST['zip_code']) || $_POST['zip_code'] === '' ||
       !isset($_POST['address']) || $_POST['address'] === ''
     ) {
-      header('Location: http://192.168.64.2/kit-web-application/signup', true, 302);
+      header('Location: http://192.168.64.2/kit-web-application/sign-up', true, 302);
       exit();
     }
 
     if ($_POST['password'] != $_POST['password_re']) {
-      header('Location: http://192.168.64.2/kit-web-application/signup', true, 302);
+      header('Location: http://192.168.64.2/kit-web-application/sign-up', true, 302);
       echo "パスワードが異なります。";
       exit();
     }

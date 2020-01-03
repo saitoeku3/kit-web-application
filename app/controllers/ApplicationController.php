@@ -1,4 +1,5 @@
 <?
+require __DIR__ . "/../views/index.php";
 require_once dirname(__FILE__) . "/../../db/connect.php";
 
 class ApplicationController {
