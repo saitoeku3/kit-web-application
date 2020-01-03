@@ -5,16 +5,36 @@
     <input class="btn btn-outline-success" type="submit" value="検索" style="width: 100px" />
   </form>
   <ul class="nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/kit-web-application/sign-up" style="color: #fff;">
-        新規登録
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/kit-web-application/sign-in" style="color: #fff;">
-        ログイン
-      </a>
-    </li>
+    <?
+    session_start();
+    if (isset($_SESSION['name'])) {
+      echo '
+        <li class="nav-item">
+          <a class="nav-link" href="/kit-web-application" style="color: #fff;">
+            '.$_SESSION['name'].'
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/kit-web-application/sign-out" style="color: #fff;">
+            ログアウト
+          </a>
+        </li>
+      ';
+    } else {
+      echo '
+        <li class="nav-item">
+          <a class="nav-link" href="/kit-web-application/sign-up" style="color: #fff;">
+            新規登録
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/kit-web-application/sign-in" style="color: #fff;">
+            ログイン
+          </a>
+        </li>
+      ';
+    }
+    ?>
     <li class="nav-item">
       <a class="nav-link" href="/kit-web-application/carts" style="color: #fff;">
         カート
