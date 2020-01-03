@@ -29,6 +29,8 @@ class SessionsController extends ApplicationController {
 
   // sign_out
   public function destroy() {
+    session_start();
+    $_SESSION = array();
     session_destroy();
     header('Location: http://192.168.64.2/kit-web-application', true, 302);
     exit();

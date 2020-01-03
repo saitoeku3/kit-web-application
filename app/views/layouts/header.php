@@ -15,9 +15,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/kit-web-application/sign-out" style="color: #fff;">
-            ログアウト
-          </a>
+          <form action="/kit-web-application/sign-out" method="post">
+            <input class="nav-link" type="submit" value="ログアウト" style="color: #fff; background-color: transparent; border: none; ">
+          </form>
         </li>
       ';
     } else {
