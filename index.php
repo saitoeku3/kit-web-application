@@ -7,10 +7,11 @@ require __DIR__ . "/./app/views/layouts/template.php";
 
 $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
-$router->map('GET', '/',       'RootController#index');
-$router->map('GET', '/signup', 'RegistrationController#signup');
-$router->map('GET', '/signin', 'RegistrationController#signin');
-$router->map('GET', '/carts',  'CartController#index');
+$router->map('GET',  '/',       'RootController#index');
+$router->map('GET',  '/signup', 'RegistrationController#signup');
+$router->map('POST', '/signup', 'RegistrationController#create');
+$router->map('GET',  '/signin', 'RegistrationController#signin');
+$router->map('GET',  '/carts',  'CartController#index');
 $match = $router->match();
 
 list( $controller, $action ) = explode( '#', $match['target'] );
