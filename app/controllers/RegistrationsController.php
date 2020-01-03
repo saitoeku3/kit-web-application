@@ -1,16 +1,10 @@
 <?
-require dirname(__FILE__) . '/../models/User.php';
+require_once dirname(__FILE__) . '/../models/User.php';
 
-class RegistrationController {
-  public function signin() {
-    $title = "ログイン";
-    $body = __DIR__ . '/../views/registrations/signin.php';
-    echo template($title, $body);
-  }
-
-  public function signup() {
+class RegistrationsController {
+  public function new() {
     $title = "新規登録";
-    $body = __DIR__ . '/../views/registrations/signup.php';
+    $body = __DIR__ . '/../views/registrations/new.php';
     echo template($title, $body);
   }
 
@@ -44,11 +38,14 @@ class RegistrationController {
 
     $user = new User($params);
     $user->save();
-    echo $user->created_at;
+
+    session_start();
+    $_SESSION['name'] = $user->name;
     header('Location: http://192.168.64.2/kit-web-application/', true, 302);
     exit();
   }
 
-  public function signout() {
+  public function destroy() {
+    session_destroy();
   }
 }

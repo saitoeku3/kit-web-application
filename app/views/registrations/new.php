@@ -29,3 +29,8 @@
   </div>
   <button type="submit" class="btn btn-primary">登録</button>
 </form>
+
+<div><?
+session_start();
+$_SESSION['name']->name
+?></div>

@@ -6,12 +6,12 @@
   </form>
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="/kit-web-application/signup" style="color: #fff;">
+      <a class="nav-link" href="/kit-web-application/sign-up" style="color: #fff;">
         新規登録
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/kit-web-application/signin" style="color: #fff;">
+      <a class="nav-link" href="/kit-web-application/sign-in" style="color: #fff;">
         ログイン
       </a>
     </li>

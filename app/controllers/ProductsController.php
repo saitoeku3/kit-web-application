@@ -1,5 +1,5 @@
 <?
-class OrderController {
+class ProductsController {
   public function index() {
   }
 }
