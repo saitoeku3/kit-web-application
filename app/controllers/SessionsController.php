@@ -20,29 +20,33 @@ class SessionsController extends ApplicationController {
     }
     session_start();
     $user = $this->authentication($_POST['email'], $_POST['password']);
-    $_SESSION['id'] = $user->id;
-    $_SESSION['email'] = $user->email;
-    $_SESSION['name'] = $user->name;
+    $_SESSION['id'] = $user['id'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['name'] = $user['name'];
     header('Location: http://192.168.64.2/kit-web-application', true, 302);
     exit();
   }
 
   // sign_out
   public function destroy() {
+    session_start();
+    $_SESSION = array();
     session_destroy();
+    header('Location: http://192.168.64.2/kit-web-application', true, 302);
+    exit();
   }
 
   private function authentication($email, $password) {
     $db = parent::connect_db();
     $sth = $db->prepare('SELECT id, name, email FROM users WHERE email = :email AND password = :password');
-    $sth->bindValue(':email',    $this->email,    PDO::PARAM_STR);
-    $sth->bindValue(':password', $this->password, PDO::PARAM_STR);
+    $sth->bindValue(':email',    $email,    PDO::PARAM_STR);
+    $sth->bindValue(':password', $password, PDO::PARAM_STR);
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
     return array(
-      'id'    => ['id'],
-      'name'  => ['name'],
-      'email' => ['email']
+      'id'    => $result['id'],
+      'name'  => $result['name'],
+      'email' => $result['email']
     );
   }
 }

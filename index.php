@@ -7,13 +7,13 @@ require __DIR__ . '/./app/controllers/SessionsController.php';
 
 $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
-$router->map('GET',    '/',         'RootController#index');
-$router->map('GET',    '/sign-up',  'RegistrationsController#new');
-$router->map('POST',   '/sign-up',  'RegistrationsController#create');
-$router->map('GET',    '/sign-in',  'SessionsController#new');
-$router->map('POST',   '/sign-in',  'SessionsController#create');
-$router->map('DELETE', '/sign-out', 'SessionsController#destroy');
-$router->map('GET',    '/carts',    'CartsController#index');
+$router->map('GET',  '/',         'RootController#index');
+$router->map('GET',  '/sign-up',  'RegistrationsController#new');
+$router->map('POST', '/sign-up',  'RegistrationsController#create');
+$router->map('GET',  '/sign-in',  'SessionsController#new');
+$router->map('POST', '/sign-in',  'SessionsController#create');
+$router->map('POST', '/sign-out', 'SessionsController#destroy'); // DELETE
+$router->map('GET',  '/carts',    'CartsController#index');
 $match = $router->match();
 
 list( $controller, $action ) = explode( '#', $match['target'] );
