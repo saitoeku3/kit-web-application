@@ -1,5 +1,5 @@
 <?
-require dirname(__FILE__) . "/./ApplicationModel.php";
+require_once dirname(__FILE__) . "/./ApplicationModel.php";
 
 class User extends ApplicationModel {
   public $id;

@@ -1,5 +1,5 @@
 <?
-require dirname(__FILE__) . "/../../db/connect.php";
+require_once dirname(__FILE__) . "/../../db/connect.php";
 
 class ApplicationModel {
   protected $db;
