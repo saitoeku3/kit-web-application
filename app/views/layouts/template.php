@@ -1,6 +1,17 @@
 <?
-function template($title, $body) {
+function template($title, $file, $args = array()) {
+  if (!file_exists($file)) {
+    return '';
+  }
+
+  if (is_array($args)) {
+    extract($args);
+  }
+
   $full_title = $title ? $title . ' | KIT Web Application' : 'KIT Web Application';
+
+  ob_start();
+  include $file;
   return '
   <!DOCTYPE html>
   <html lang="ja">
@@ -34,7 +45,7 @@ function template($title, $body) {
     </head>
     <body>
       '.file_get_contents(__DIR__ .'/./header.php').'
-      <div class="container" style="margin-top: 32px;">'.$body.'</div>
+      <div class="container" style="margin-top: 32px;">'.ob_get_clean().'</div>
     </body>
   </html>
   ';
