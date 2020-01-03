@@ -1,7 +1,8 @@
 <?
+require_once dirname(__FILE__) . "/./ApplicationController.php";
 require_once dirname(__FILE__) . '/../models/User.php';
 
-class RegistrationsController {
+class RegistrationsController extends ApplicationController{
   public function new() {
     $title = "新規登録";
     $body = __DIR__ . '/../views/registrations/new.php';
@@ -40,6 +41,8 @@ class RegistrationsController {
     $user->save();
 
     session_start();
+    $_SESSION['id'] = $user->id;
+    $_SESSION['email'] = $user->email;
     $_SESSION['name'] = $user->name;
     header('Location: http://192.168.64.2/kit-web-application/', true, 302);
     exit();
