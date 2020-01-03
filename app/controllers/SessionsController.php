@@ -38,15 +38,19 @@ class SessionsController extends ApplicationController {
 
   private function authentication($email, $password) {
     $db = parent::connect_db();
-    $sth = $db->prepare('SELECT id, name, email FROM users WHERE email = :email AND password = :password');
+    $sth = $db->prepare('SELECT id, name, email, password FROM users WHERE email = :email');
     $sth->bindValue(':email',    $email,    PDO::PARAM_STR);
-    $sth->bindValue(':password', $password, PDO::PARAM_STR);
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
-    return array(
-      'id'    => $result['id'],
-      'name'  => $result['name'],
-      'email' => $result['email']
-    );
+
+    if (password_verify($password, $result['password'])) {
+      return array(
+        'id'    => $result['id'],
+        'name'  => $result['name'],
+        'email' => $result['email']
+      );
+    } else {
+      echo 'ログインに失敗しました。';
+    }
   }
 }
