@@ -1,6 +1,7 @@
 <?
 require __DIR__ . '/./vendor/autoload.php';
 require __DIR__ . '/./app/controllers/CartController.php';
+require __DIR__ . '/./app/controllers/ProductsController.php';
 require __DIR__ . '/./app/controllers/RootController.php';
 require __DIR__ . '/./app/controllers/RegistrationController.php';
 require __DIR__ . "/./app/views/layouts/template.php";
@@ -11,6 +12,8 @@ $router->map('GET', '/',       'RootController#index');
 $router->map('GET', '/signup', 'RegistrationController#signup');
 $router->map('GET', '/signin', 'RegistrationController#signin');
 $router->map('GET', '/carts',  'CartController#index');
+$router->map('GET', '/products/[i:id]','ProductsController#show');
+
 $match = $router->match();
 
 list( $controller, $action ) = explode( '#', $match['target'] );

@@ -18,6 +18,9 @@ function template($title, $body) {
       <link
         rel="stylesheet"
         href="http://192.168.64.2/kit-web-application/app/assets/layouts.css">
+      <link
+        rel="stylesheet"
+        href="http://192.168.64.2/kit-web-application/app/assets/product.css">
       <script
         src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
