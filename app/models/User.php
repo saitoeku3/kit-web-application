@@ -21,7 +21,8 @@ class User extends ApplicationModel {
 
   public function save() {
     try {
-      $insert_sth = $this->db->prepare(
+      $db = parent::connect_db();
+      $insert_sth = $db->prepare(
         'INSERT INTO users (name, email, password, zip_code, address) VALUES (:name, :email, :password, :zip_code, :address)'
       );
       $insert_sth->bindValue(':name',     $this->name,     PDO::PARAM_STR);
