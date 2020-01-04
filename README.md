@@ -11,7 +11,9 @@ $ git clone https://github.com/saitoeku3/kit-web-application.git
 $ cd kit-web-application
 $ composer install # Install libraries
 $ vi dbconfig.json # Input root and password like dbconfig.sample.json
-$ make create && make migrate # Create and migrate database
+$ make create # Create database
+$ make migrate # Migrate database
+$ make seed # Add seed data to database
 ```
 
 ## Idea
