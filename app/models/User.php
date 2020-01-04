@@ -10,13 +10,12 @@ class User extends ApplicationModel {
   public $address;
   public $created_at;
 
-  public function __construct($user) {
-    parent::__construct();
-    $this->name = $user['name'];
-    $this->email = $user['email'];
-    $this->password = password_hash($user['password'], PASSWORD_BCRYPT);
-    $this->zip_code = $user['zip_code'];
-    $this->address = $user['address'];
+  public function __construct($params) {
+    $this->name = $params['name'];
+    $this->email = $params['email'];
+    $this->password = password_hash($params['password'], PASSWORD_BCRYPT);
+    $this->zip_code = $params['zip_code'];
+    $this->address = $params['address'];
   }
 
   public function save() {
@@ -31,9 +30,9 @@ class User extends ApplicationModel {
       $insert_sth->bindValue(':zip_code', $this->zip_code, PDO::PARAM_STR);
       $insert_sth->bindValue(':address',  $this->address,  PDO::PARAM_STR);
       $insert_sth->execute();
-      $this->id = $this->db->lastInsertId();
+      $this->id = $db->lastInsertId();
 
-      $select_sth = $this->db->query("SELECT created_at FROM users WHERE id = $this->id");
+      $select_sth = $db->query("SELECT created_at FROM users WHERE id = $this->id");
       $select_result = $select_sth->fetch(PDO::FETCH_ASSOC);
       $this->created_at = $select_result['created_at'];
     } catch (PDOException $e) {
