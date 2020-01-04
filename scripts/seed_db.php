@@ -6,6 +6,6 @@ $products = json_decode(file_get_contents(__DIR__ . '/../db/seeds/products.json'
 
 foreach ($products as $params) {
   $product = new Product($params);
-  $product.save();
+  $product->save();
 }
 ?>
