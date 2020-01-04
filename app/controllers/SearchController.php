@@ -1,5 +1,6 @@
 <?
 require_once dirname(__FILE__) . "/./ApplicationController.php";
+require_once dirname(__FILE__) . "/../models/Product.php";
 
 class SearchController extends ApplicationController{
   public function index() {
@@ -14,9 +15,11 @@ class SearchController extends ApplicationController{
       $word = $queries['?q'];
     }
 
-    $title = $word . "の検索結果";
+    $products = Product::find_by_name($word);
+
+    $title = '「'.$word.'」の検索結果';
     $body = __DIR__ . '/../views/search/index.php';
-    $data = array('word' => $word);
+    $data = array('word' => $word, 'products' => $products);
     echo view($title, $body, $data);
   }
 }
