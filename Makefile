@@ -4,6 +4,9 @@ create:
 migrate:
 	php scripts/migrate_db.php
 
+seed:
+	php scripts/seed_db.php
+
 drop:
 	php scripts/drop_db.php
 

@@ -2,9 +2,7 @@
 require_once dirname(__FILE__) . "/../../db/connect.php";
 
 class ApplicationModel {
-  protected $db;
-
-  public function __construct() {
-    $this->db = connect_db();
+  protected function connect_db() {
+    return connect_db();
   }
 }
