@@ -15,7 +15,7 @@ class SessionsController extends ApplicationController {
       !isset($_POST['email']) || $_POST['email'] === '' ||
       !isset($_POST['password']) || $_POST['password'] === ''
     ) {
-      header('Location: http://192.168.64.2/kit-web-application/sign-in', true, 302);
+      header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/sign-in', true, 302);
       exit();
     }
     session_start();
@@ -23,7 +23,7 @@ class SessionsController extends ApplicationController {
     $_SESSION['id'] = $user['id'];
     $_SESSION['email'] = $user['email'];
     $_SESSION['name'] = $user['name'];
-    header('Location: http://192.168.64.2/kit-web-application', true, 302);
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application', true, 302);
     exit();
   }
 
@@ -32,7 +32,7 @@ class SessionsController extends ApplicationController {
     session_start();
     $_SESSION = array();
     session_destroy();
-    header('Location: http://192.168.64.2/kit-web-application', true, 302);
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application', true, 302);
     exit();
   }
 

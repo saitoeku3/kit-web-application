@@ -21,7 +21,7 @@ function view($title, $file, $args = array()) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link
           rel="stylesheet"
-          href="http://192.168.64.2/kit-web-application/app/assets/fontawesome/css/all.min.css">
+          href="http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/app/assets/fontawesome/css/all.min.css">
         <link
           rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -29,10 +29,7 @@ function view($title, $file, $args = array()) {
           crossorigin="anonymous">
         <link
           rel="stylesheet"
-          href="http://192.168.64.2/kit-web-application/app/assets/layouts.css">
-        <link
-          rel="stylesheet"
-          href="http://192.168.64.2/kit-web-application/app/assets/products.css">
+          href="http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/app/assets/products.css">
         <script
           src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
           integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
