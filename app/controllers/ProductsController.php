@@ -1,8 +1,9 @@
 <?
+require_once dirname(__FILE__) . "/./ApplicationController.php";
 class ProductsController {
   public function show() {
       $title = "カート";
-      $body = file_get_contents(__DIR__ . '/../views/products/show.php');
-      echo template($title, $body);
+      $body = __DIR__ . '/../views/products/show.php';
+      echo view($title, $body);
   }
 }

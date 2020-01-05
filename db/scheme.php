@@ -5,7 +5,7 @@ $users = "create table users (
   email VARCHAR(255) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
   zip_code VARCHAR(255) NOT NULL,
-  adress VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX(id)
   )";

@@ -21,7 +21,7 @@ try {
   $order_histories_sql = $db->prepare($order_histories);
   $order_histories_sql->execute();
 
-  echo "Migrate kit_web_application successfully!";
+  echo "Migrate kit_web_application successfully!\n";
 } catch (PDOException $e) {
   echo $e;
   die();
