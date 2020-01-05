@@ -19,12 +19,12 @@ class RegistrationsController extends ApplicationController{
       !isset($_POST['zip_code']) || $_POST['zip_code'] === '' ||
       !isset($_POST['address']) || $_POST['address'] === ''
     ) {
-      header('Location: http://192.168.64.2/kit-web-application/sign-up', true, 302);
+      header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/sign-up', true, 302);
       exit();
     }
 
     if ($_POST['password'] != $_POST['password_re']) {
-      header('Location: http://192.168.64.2/kit-web-application/sign-up', true, 302);
+      header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/sign-up', true, 302);
       echo "パスワードが異なります。";
       exit();
     }
@@ -44,7 +44,7 @@ class RegistrationsController extends ApplicationController{
     $_SESSION['id'] = $user->id;
     $_SESSION['email'] = $user->email;
     $_SESSION['name'] = $user->name;
-    header('Location: http://192.168.64.2/kit-web-application/', true, 302);
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/', true, 302);
     exit();
   }
 
