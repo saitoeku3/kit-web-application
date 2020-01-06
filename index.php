@@ -12,6 +12,7 @@ $router->setBasePath('/kit-web-application');
 
 $router->map('GET',  '/',                'RootController#index');
 $router->map('GET',  '/carts',           'CartsController#index');
+$router->map('POST', '/carts',           'CartsController#create');
 $router->map('POST', '/carts/[i:id]',    'CartsController#destroy'); // DELETE
 $router->map('GET',  '/products/[i:id]', 'ProductsController#show');
 $router->map('GET',  '/search',          'SearchController#index');

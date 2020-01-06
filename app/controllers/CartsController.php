@@ -11,13 +11,26 @@ class CartsController extends ApplicationController {
     }
 
     if (isset($_SESSION['id'])) {
-      $products = OrderHistory::find_products_by_user_id($_SESSION['id']);
+      $products = OrderHistory::find_cart_products_by_user_id($_SESSION['id']);
     }
 
     $title = "カート";
     $body = __DIR__ . '/../views/carts/index.php';
     $data = array('products' => $products);
     echo view($title, $body, $data);
+  }
+  public function create() {
+      if(!isset($_SESSION)){
+        session_start();
+      }
+      if(isset($_SESSION['id'])) {
+        OrderHistory::add_carts($_POST['product_id']);
+        header('Location: http://192.168.64.2/kit-web-application/carts');
+        exit;
+      }
+      //仮
+      header('Location: http://192.168.64.2/kit-web-application/');
+      exit;
   }
 
   public function destroy() {

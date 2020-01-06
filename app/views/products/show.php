@@ -9,10 +9,13 @@
     <img src="" class="product-img">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">商品名</h4>
-            <p class="card-text">価格: 1000円</p>
-            <p class="card-text">商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。商品の説明。</p>
-            <a href="#" class="btn btn-primary">購入する。</a>
+            <h4 class="card-title"><?= $name ?></h4>
+            <p class="card-text">【価格】<?= $price ?>円</p>
+            <p class="card-text">【商品説明】<br><?= $description ?></p>
+            <form method="post" action="http://192.168.64.2/kit-web-application/carts">
+                <input type="hidden" value=<?= $id ?> name="product_id">
+                <button type="submit" class="btn btn-primary">購入する</button>
+            </form>
         </div>
     </div>
 </div>
