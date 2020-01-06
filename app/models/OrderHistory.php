@@ -13,14 +13,14 @@ class OrderHistory extends ApplicationModel {
     $this->product_id = $params['product_id'];
   }
 
-  public function find_products_by_user_id($user_id) {
+  public function find_cart_products_by_user_id($user_id) {
     try {
       $db = parent::connect_db();
       $sth = $db->prepare('
         SELECT
           order_histories.id AS order_histories_id, order_histories.product_id, products.name, products.price, products.image_url
         FROM
-          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id;'
+          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = false;'
       );
       $sth->bindValue(':user_id', $user_id, PDO::PARAM_INT);
       $sth->execute();
@@ -30,7 +30,36 @@ class OrderHistory extends ApplicationModel {
       die('Error:' . $e->getMessage());
     }
   }
-
+  public function find_parchased_products_by_user_id($user_id) {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('
+        SELECT
+          order_histories.id AS order_histories_id, order_histories.product_id, products.name, products.price, products.image_url
+        FROM
+          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = true;'
+      );
+      $sth->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+  public function add_carts($product_id) {
+   $db = parent::connect_db();
+   if (isset($_SESSION['id'])==1) {
+       try{
+       $insert_sth = $db->prepare('INSERT INTO order_histories (user_id, product_id) VALUES (:user_id, :product_id)');
+       $insert_sth->bindValue(':user_id',        $_SESSION['id'],        PDO::PARAM_INT);
+       $insert_sth->bindValue(':product_id',     $product_id,            PDO::PARAM_INT);
+       $insert_sth->execute();
+       } catch (PDOException $e) {
+         die('Error:' . $e->getMessage());
+       }
+    }
+  }
   public function save() {
     try {
       $db = parent::connect_db();
