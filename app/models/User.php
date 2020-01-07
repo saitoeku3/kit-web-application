@@ -17,7 +17,20 @@ class User extends ApplicationModel {
     $this->zip_code = $params['zip_code'];
     $this->address = $params['address'];
   }
-
+  public function find_by_id($id){
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('
+        SELECT * FROM users WHERE id = :id;'
+      );
+      $sth->bindValue(':id', $id, PDO::PARAM_INT);
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
   public function save() {
     try {
       $db = parent::connect_db();

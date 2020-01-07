@@ -34,12 +34,14 @@ if (!isset($_SESSION)) {
         </a>
       </li>
     <? } ?>
-    <li class="nav-item">
-      <a class="nav-link" href="/kit-web-application/carts" style="color: #fff;">
-        カート
-        <i class="fas fa-shopping-cart"></i>
-      </a>
-    </li>
+    <? if (isset($_SESSION['name'])) { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="/kit-web-application/carts" style="color: #fff;">
+          カート
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+      </li>
+    <? } ?>
   </ul>
 </nav>
 
