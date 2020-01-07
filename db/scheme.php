@@ -38,6 +38,7 @@ $order_histories = "create table order_histories (
   user_id INT NOT NULL,
   product_id INT NOT NULL,
   has_parchased BOOLEAN NOT NULL DEFAULT false,
+  quantity INT NOT NULL DEFAULT 1,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   INDEX(id),
   FOREIGN KEY (user_id) REFERENCES users(id),
