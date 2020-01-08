@@ -1,17 +1,22 @@
 <?
 require_once dirname(__FILE__) . '/./ApplicationController.php';
+require_once dirname(__FILE__) . '/../models/Review.php';
 require_once dirname(__FILE__) . '/../models/Product.php';
 
-class ProductsController {
+class ProductsController extends ApplicationController {
   public function show() {
+      Parent::is_logged_in();
       $title = "カート";
       $body = __DIR__ . '/../views/products/show.php';
       $keys = parse_url($_SERVER["REQUEST_URI"]); //パース処理
       $path = explode("/", $keys['path']); //分割処理
-      $last = end($path); //最後の要素を取得
-      $product = Product::find_by_id($last);
+      $product_id = end($path); //最後の要素を取得
+      $product = Product::find_by_id($product_id);
+      $reviews = Review::find_by_product_id($product_id);
+      $is_reviewed = Review::is_already_reviewed($product_id);
+      $rate_average = Review::get_rate_average($product_id);
       $categorys = Product::get_category();
-      $data = array('product' => $product[0],'categorys' => $categorys);
+      $data = array('product' => $product[0],'categorys' => $categorys, 'reviews' => $reviews,'is_reviewed'=>$is_reviewed,'rate_average' => $rate_average);
       echo view($title, $body, $data);
   }
 

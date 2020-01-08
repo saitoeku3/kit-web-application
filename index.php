@@ -9,6 +9,7 @@ require __DIR__ . '/./app/controllers/RegistrationsController.php';
 require __DIR__ . '/./app/controllers/RootController.php';
 require __DIR__ . '/./app/controllers/SearchController.php';
 require __DIR__ . '/./app/controllers/SessionsController.php';
+require __DIR__ . '/./app/controllers/ReviewsController.php';
 
 $router = new AltoRouter();
 $router->setBasePath('/kit-web-application');
@@ -33,6 +34,7 @@ $router->map('POST', '/sign-in',                'SessionsController#create');
 $router->map('GET',  '/sign-up',                'RegistrationsController#new');
 $router->map('POST', '/sign-up',                'RegistrationsController#create');
 $router->map('POST', '/sign-out',               'SessionsController#destroy'); // DELETE
+$router->map('POST', '/reviews',                'ReviewsController#create');
 
 $match = $router->match();
 

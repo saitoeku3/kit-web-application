@@ -77,7 +77,7 @@ class Product extends ApplicationModel {
       return $result;
     } catch (PDOException $e) {
       die('Error:' . $e->getMessage());
-   }
+    }
   }
   public function get_category(){
       try {
