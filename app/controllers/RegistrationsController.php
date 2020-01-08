@@ -34,16 +34,17 @@ class RegistrationsController extends ApplicationController{
       'email'    => $_POST['email'],
       'password' => $_POST['password'],
       'zip_code' => $_POST['zip_code'],
-      'address'  => $_POST['address']
+      'address'  => $_POST['address'],
+      'is_admin' => false
     );
 
     $user = new User($params);
     $user->save();
 
     session_start();
-    $_SESSION['id'] = $user->id;
-    $_SESSION['email'] = $user->email;
-    $_SESSION['name'] = $user->name;
+    $_SESSION['id']       = $user->id;
+    $_SESSION['name']     = $user->name;
+    $_SESSION['is_admin'] = $user->is_admin;
     header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/', true, 302);
     exit();
   }
