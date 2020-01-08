@@ -18,7 +18,8 @@ class User extends ApplicationModel {
     $this->address = $params['address'];
     $this->is_admin = $params['is_admin'];
   }
-  public function find_by_id($id){
+
+  public function find_by_id($id) {
     try {
       $db = parent::connect_db();
       $sth = $db->prepare('
@@ -43,7 +44,7 @@ class User extends ApplicationModel {
       $insert_sth->bindValue(':password', $this->password, PDO::PARAM_STR);
       $insert_sth->bindValue(':zip_code', $this->zip_code, PDO::PARAM_STR);
       $insert_sth->bindValue(':address',  $this->address,  PDO::PARAM_STR);
-      $insert_sth->bindValue(':is_admin',  $this->is_admin,  PDO::PARAM_STR);
+      $insert_sth->bindValue(':is_admin', $this->is_admin,  PDO::PARAM_BOOL);
       $insert_sth->execute();
       $this->id = $db->lastInsertId();
 
