@@ -2,7 +2,9 @@
   <div style="display: flex; flex-direction:row; justify-content: space-between;">
     <h2>カート</h2>
     <? if (count($products) != 0) { ?>
-    <button type="button" class="btn btn-primary" style="width: 200px; margin-bottom: 32px;">注文</button>
+    <form method="GET" action="/kit-web-application/orders/new">
+      <button type="submit" class="btn btn-primary" style="width: 200px; margin-bottom: 32px;">注文</button>
+    </form>
     <? } ?>
   </div>
   <div>
@@ -16,7 +18,8 @@
         alt="">
         <div style="width: 50%;">
           <h3><? echo $product['name'] ?></h3>
-          <div><? echo $product['price'] ?></div>
+          <div>単価:<? echo $product['price'] ?>円</div>
+          <div>合計価格:<? echo $product['price'] * $product['quantity'] ?>円</div>
           <label for="">個数:<? echo $product['quantity'] ?></label>
           <form method="POST" action="/kit-web-application/orders/edit">
             <input type="hidden" name="product_id" value=<?= $product['product_id'] ?> >

@@ -20,7 +20,7 @@ class OrderHistory extends ApplicationModel {
         SELECT
           order_histories.id AS order_histories_id, order_histories.product_id, order_histories.quantity, products.name, products.price, products.image_url
         FROM
-          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = false;'
+          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = false ORDER BY order_histories.id DESC;'
       );
       $sth->bindValue(':user_id', $user_id, PDO::PARAM_INT);
       $sth->execute();
@@ -36,9 +36,9 @@ class OrderHistory extends ApplicationModel {
       $db = parent::connect_db();
       $sth = $db->prepare('
         SELECT
-          order_histories.id AS order_histories_id, order_histories.product_id, products.name, products.price, products.image_url
+          order_histories.id AS order_histories_id, order_histories.product_id,order_histories.created_at,order_histories.quantity, products.name, products.price, products.image_url
         FROM
-          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = true;'
+          order_histories INNER JOIN products ON order_histories.product_id = products.id WHERE user_id = :user_id and has_parchased = true ORDER BY order_histories.id DESC;'
       );
       $sth->bindValue(':user_id', $user_id, PDO::PARAM_INT);
       $sth->execute();
@@ -66,57 +66,86 @@ class OrderHistory extends ApplicationModel {
        }
     }
   }
+    
   public function edit_product_quantity($quantity,$product_id) {
-    try{
+    if (isset($_SESSION['id'])) {
+      try{
+        $db = parent::connect_db();
+        $sth = $db->prepare('
+          UPDATE
+            order_histories
+          SET
+            quantity=:quantity WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
+        );
+        $sth->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+        $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+        $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+        $sth->execute();
+      } catch (PDOException $e) {
+        die('Error:' . $e->getMessage());
+      }
+    }
+  }
+    
+  public static function is_already_in_cart($product_id) {
+    //product_idを受け取ってカートにあるかどうか調べてbooleanを返す。
+    if (isset($_SESSION['id'])) {
       $db = parent::connect_db();
       $sth = $db->prepare('
-        UPDATE
-          order_histories
-        SET
-          quantity=:quantity WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
+          SELECT * FROM order_histories WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
       );
-      $sth->bindValue(':quantity', $quantity, PDO::PARAM_INT);
       $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
       $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
       $sth->execute();
-    } catch (PDOException $e) {
-      die('Error:' . $e->getMessage());
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return !empty($result);
     }
   }
-  public static function is_already_in_cart($product_id) {
-    //product_idを受け取ってカートにあるかどうか調べてbooleanを返す。
-    $db = parent::connect_db();
-    $sth = $db->prepare('
-        SELECT * FROM order_histories WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
-    );
-    $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
-    $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
-    $sth->execute();
-    $result = $sth->fetchAll(PDO::FETCH_ASSOC);
-    return !empty($result);
-  }
+    
   public static function add_product_quantity_in_carts($product_id){
     //カートにある商品の個数をプラス１する。
     //quantityを持ってくる。
-    $db = parent::connect_db();
-    $sth = $db->prepare('
-        SELECT quantity FROM order_histories WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
-    );
-    $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
-    $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
-    $sth->execute();
-    $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+    if (isset($_SESSION['id'])) {
+      $db = parent::connect_db();
+      $sth = $db->prepare('
+          SELECT quantity FROM order_histories WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
+      );
+      $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+      $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
     //quantityを更新
-    $sth = $db->prepare('
-        UPDATE
-          order_histories
-        SET
+      $sth = $db->prepare('
+          UPDATE
+            order_histories
+          SET
           quantity=:quantity WHERE user_id = :user_id and product_id = :product_id and has_parchased = false;'
-    );
-    $sth->bindValue(':quantity', $result[0]['quantity']+1, PDO::PARAM_INT);
-    $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
-    $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
-    $sth->execute();
+      );
+      $sth->bindValue(':quantity', $result[0]['quantity']+1, PDO::PARAM_INT);
+      $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+      $sth->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+      $sth->execute();
+    }
+  }
+    
+  public function give_order(){
+    if (isset($_SESSION['id'])) {
+      try{
+        $db = parent::connect_db();
+        $sth = $db->prepare('
+          UPDATE
+            order_histories
+          SET
+            has_parchased = true
+          WHERE
+            user_id = :user_id;'
+        );
+        $sth->bindValue(':user_id', $_SESSION['id'], PDO::PARAM_INT);
+        $sth->execute();
+      } catch (PDOException $e) {
+        die('Error:' . $e->getMessage());
+      }
+    }
   }
   public function save() {
     try {
