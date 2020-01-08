@@ -4,6 +4,7 @@ require __DIR__ . '/./app/controllers/CartsController.php';
 require __DIR__ . '/./app/controllers/ManegementsController.php';
 require __DIR__ . '/./app/controllers/OrdersController.php';
 require __DIR__ . '/./app/controllers/ProductsController.php';
+require __DIR__ . '/./app/controllers/ProfileController.php';
 require __DIR__ . '/./app/controllers/RegistrationsController.php';
 require __DIR__ . '/./app/controllers/RootController.php';
 require __DIR__ . '/./app/controllers/SearchController.php';
@@ -25,6 +26,7 @@ $router->map('POST', '/orders/edit',            'OrdersController#edit'); // PAT
 $router->map('GET',  '/products/[i:id]',        'ProductsController#show');
 $router->map('POST', '/products',               'ProductsController#create');
 $router->map('POST', '/products/[i:id]/delete', 'ProductsController#destroy'); // DELETE
+$router->map('GET',  '/profile',                'ProfileController#index');
 $router->map('GET',  '/search',                 'SearchController#index');
 $router->map('GET',  '/sign-in',                'SessionsController#new');
 $router->map('POST', '/sign-in',                'SessionsController#create');

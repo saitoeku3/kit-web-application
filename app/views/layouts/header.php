@@ -20,7 +20,7 @@ if (!isset($_SESSION)) {
     <? } ?>
     <? if (isset($_SESSION['name'])) { ?>
       <li class="nav-item">
-        <a class="nav-link" href="/kit-web-application" style="color: #fff;">
+        <a class="nav-link" href="/kit-web-application/profile" style="color: #fff;">
           <?= $_SESSION['name'] ?>
         </a>
       </li>
