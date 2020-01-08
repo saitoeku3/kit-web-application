@@ -10,12 +10,15 @@
   </div>
   <div style="display:flex; flex-direction:row; justify-content: space-between;">
       <div class="list-group" id="category-box">
-  　　   <div class="list-group-item" style="background-color: #f5f5f5">ジャンル一覧</div>
-        <? foreach ($categorys as $category) { ?>
-          <a href="#" class="list-group-item"><? echo $category ?></a>
-        <? }?>
+          <div class="list-group-item" style="background-color: #f5f5f5;text-align:center">ジャンル一覧</div>
+          <? foreach ($categorys as $category) { ?>
+            <form id="search-form"action="/kit-web-application/search" method="get">
+              <input type="hidden" name="tag" value=<? echo $category ?> >
+              <input type="submit" class="list-group-item" value=<? echo $category ?> style="width:200px;">
+            </form>
+          <? } ?>
       </div>
-      <div style="width: 60vw;" >
+      <div style="width: 60vw;">
         <h2 style="margin-bottom: 16px;">売れ筋の商品</h2>
         <div style="
           display: grid;
@@ -37,6 +40,5 @@
           <? } ?>
         </div>
       </div>
-    </div>
   </div>
 </div>

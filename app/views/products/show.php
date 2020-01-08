@@ -1,11 +1,14 @@
 <div class="wrapper">
     <div class="list-group" id="category-box">
-        <div class="list-group-item" style="background-color: #f5f5f5">ジャンル一覧</div>
+        <div class="list-group-item" style="background-color: #f5f5f5;text-align:center">ジャンル一覧</div>
         <? foreach ($categorys as $category) { ?>
-          <a href="#" class="list-group-item"><? echo $category ?></a>
+          <form id="search-form"action="/kit-web-application/search" method="get">
+            <input type="hidden" name="tag" value=<? echo $category ?> >
+            <input type="submit" class="list-group-item" value=<? echo $category ?> style="width:200px;">
+          </form>
         <? } ?>
     </div>
-    <img src="<?= $image_url ?>" class="product-img">
+    <img src="<?= $product['image_url'] ?>" class="product-img" alt="<?= $product['name'] ?>">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title"><?= $product['name'] ?></h4>

@@ -46,7 +46,7 @@ class Product extends ApplicationModel {
     try {
       $db = parent::connect_db();
       $sth = $db->prepare('SELECT * from products WHERE category = :category');
-      $sth->bindValue(':category', "%$category", PDO::PARAM_STR);
+      $sth->bindValue(':category', $category, PDO::PARAM_STR);
       $sth->execute();
       $result = $sth->fetchAll(PDO::FETCH_ASSOC);
       return $result;
