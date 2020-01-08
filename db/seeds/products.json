@@ -1,11 +1,144 @@
 {
   "data": [
     {
+      "name": "九谷焼",
+      "description": "石川県南部の金沢市、小松市、加賀市、能美市で生産される色絵の磁器",
+      "image_url": "https://i.gyazo.com/521db13ed907f47aa4bdd2fd42ac82ed.jpg",
+      "category": "焼物",
+      "price": 2500
+    },
+    {
+      "name": "加賀友禅",
+      "description": "日本の着物の染色技法である友禅の一つ",
+      "image_url": "https://i.gyazo.com/ae60fa067c0729b640f7b5c0873467cf.jpg",
+      "category": "刺繍・着物",
+      "price": 20000
+    },
+    {
+      "name": "金箔",
+      "description": "金を微量の銀や銅とともに金槌で叩いてごく薄く延ばし、箔状態にしたもの",
+      "image_url": "https://i.gyazo.com/654821c814480e3f89bcc3bf9cd4f8fa.jpg",
+      "category": "工芸品",
+      "price": 3000
+    },
+    {
+      "name": "加賀水引細工",
+      "description": "体的な和紙の包み方・折型（紙細工）、造形的な結び方（紐細工）、紙細工と紐細工に調和させた美しい筆字など 加賀百万石らしい美しく豪華絢爛な贈答品の梱包技術を総称したもの",
+      "image_url": "https://i.gyazo.com/8272f96600bcce065091d196a2215e2d.jpg",
+      "category": "奥迎賓",
+      "price": 1500
+    },
+    {
+      "name": "山中漆器",
+      "description": "石川県加賀市の山中温泉地区で生産される漆器",
+      "image_url": "https://i.gyazo.com/bc137d482b896ac2a8c7f0ce89950734.jpg",
+      "category": "焼物",
+      "price": 1500
+    },
+    {
+      "name": "七尾和ロウソク",
+      "description": "ハゼの木から取った植物油をロウに使い、芯に和紙を用いた古くからの和ろうそく",
+      "image_url": "https://i.gyazo.com/af1cd6786349fa8d25d75f41554d771d.jpg",
+      "category": "工芸品",
+      "price": 700
+    },
+    {
+      "name": "加賀縫",
+      "description": "室町時代、京都より金沢に伝えられたとされる手刺繍",
+      "image_url": "https://i.gyazo.com/30267f20ee9b2f1657cf43ed408593fa.jpg",
+      "category": "刺繍・着物",
+      "price": 5000
+    },
+    {
+      "name": "加賀毛針",
+      "description": "金沢ならではの技術が発達して作られた釣り用の毛針",
+      "image_url": "https://i.gyazo.com/0988829240de7063494ebb6b25ceef45.jpg",
+      "category": "工芸品",
+      "price": 1000
+    },
+    {
+      "name": "金沢和傘",
+      "description": "中国から伝えられた天蓋式絹傘と平安時代に長柄をつけて貴人にさしかけた菅笠から変化したもの",
+      "image_url": "https://i.gyazo.com/aea3899e9b5fdf6116dd2e2240d659fa.jpg",
+      "category": "工芸品",
+      "price": 2000
+    },
+    {
+      "name": "とり野菜みそ",
+      "description": "大豆と米麹から作る米みそに数種類の調味料や香辛料などを混ぜ合わせた調味みそ",
+      "image_url": "https://i.gyazo.com/a99589644cfa4240f920e831c1a30766.jpg",
+      "category": "食品",
+      "price": 300
+    },
+    {
+      "name": "YUKIZURI",
+      "description": "雪吊りの縄をイメージし、前田家の“梅鉢紋”から能登町の梅をはじめ、能登の卵・塩・米をふんだんに使い、フランス伝統菓子のサクリスタンをヒントに焼きあげた菓子",
+      "image_url": "https://i.gyazo.com/05b600198b0d33677028a4c91a347856.jpg",
+      "category": "菓子",
+      "price": 300
+    },
+    {
+      "name": "ひゃくまん穀",
+      "description": "石川県で生まれたお米",
+      "image_url": "https://i.gyazo.com/aef62072fb4fb8339c03fc77bb4d8a13.jpg",
+      "category": "食品",
+      "price": 2980
+    },
+    {
+      "name": "竹葉 能登純米",
+      "description": "能登町宇出津の数馬酒造が醸す銘柄",
+      "image_url": "https://i.gyazo.com/bc9a391aa33a91ebc5e04dea60ce00af.jpg",
+      "category": "食品",
+      "price": 2600
+    },
+    {
       "name": "チャンピオンカレー",
-      "description": "昭和36年創業、金沢カレーの元祖！チャンカレの相性で50年以上地元で愛されるカレー。",
+      "description": "昭和36年創業、金沢カレーの元祖！チャンカレの相性で50年以上地元で愛されるカレー",
       "image_url": "https://img21.shop-pro.jp/PA01327/440/product/128590448.png?cmsp_timestamp=20180219101006",
-      "category": "食べ物",
+      "category": "食品",
       "price": 950
+    },
+    {
+      "name": "加賀棒茶",
+      "description": "お年を召されてからは特に焙じ茶を好まれた昭和天皇にと、試行錯誤を重ねてつくった棒茶",
+      "image_url": "https://i.gyazo.com/1037621ae2d351149653f95fe2c5260f.jpg",
+      "category": "食品",
+      "price": 900
+    },
+    {
+      "name": "福うさぎ",
+      "description": "五郎島金時の餡を包んだ白うさぎとこしあんを包んだ紅うさぎ",
+      "image_url": "https://i.gyazo.com/90756bafc4aa6fe15955b8771ecb0743.jpg",
+      "category": "菓子",
+      "price": 500
+    },
+    {
+      "name": "ルビーロマン",
+      "description": "石川県農業総合研究センター砂丘地農業試験場が14年の歳月を費やして育成した新しい「ぶどう」",
+      "image_url": "https://i.gyazo.com/2e6761e6b8eef4831707c0c53f8c8557.jpg",
+      "category": "食品",
+      "price": 3000
+    },
+    {
+      "name": "柴舟",
+      "description": "生姜と砂糖を煎餅に塗った、上品で落ち着いた煎餅",
+      "image_url": "https://i.gyazo.com/3f8af091660ade9e0bda7fe7ecd5a02a.jpg",
+      "category": "菓子",
+      "price": 800
+    },
+    {
+      "name": "「加賀の白峰」佃煮",
+      "description": "くるみを飴で炊いたくるみの佃煮",
+      "image_url": "https://i.gyazo.com/a3b7dd05185acb85227990451221f214.jpg",
+      "category": "食品",
+      "price": 800
+    },
+    {
+      "name": "輪島プリン",
+      "description": "郷土を愛する女性たちの夢が詰まったプリン",
+      "image_url": "https://i.gyazo.com/55759d252abb8a6a8774f1ef606dc97c.jpg",
+      "category": "菓子",
+      "price": 200
     }
   ]
 }
