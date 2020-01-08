@@ -11,10 +11,17 @@ if (!isset($_SESSION)) {
     <input class="btn btn-outline-success" type="submit" value="検索" style="width: 100px" />
   </form>
   <ul class="nav">
+    <? if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) { ?>
+      <li class="nav-item">
+        <a class="nav-link" href="/kit-web-application/manegements" style="color: #fff;">
+          管理画面
+        </a>
+      </li>
+    <? } ?>
     <? if (isset($_SESSION['name'])) { ?>
       <li class="nav-item">
         <a class="nav-link" href="/kit-web-application" style="color: #fff;">
-          <? echo $_SESSION['name'] ?>
+          <?= $_SESSION['name'] ?>
         </a>
       </li>
       <li class="nav-item">

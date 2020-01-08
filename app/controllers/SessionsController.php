@@ -20,9 +20,9 @@ class SessionsController extends ApplicationController {
     }
     session_start();
     $user = $this->authentication($_POST['email'], $_POST['password']);
-    $_SESSION['id'] = $user['id'];
-    $_SESSION['email'] = $user['email'];
-    $_SESSION['name'] = $user['name'];
+    $_SESSION['id']       = $user['id'];
+    $_SESSION['name']     = $user['name'];
+    $_SESSION['is_admin'] = $user['is_admin'];
     header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application', true, 302);
     exit();
   }
@@ -32,22 +32,23 @@ class SessionsController extends ApplicationController {
     session_start();
     $_SESSION = array();
     session_destroy();
+    setcookie('PHPSESSID', '', time() -60);
     header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application', true, 302);
     exit();
   }
 
   private function authentication($email, $password) {
     $db = parent::connect_db();
-    $sth = $db->prepare('SELECT id, name, email, password FROM users WHERE email = :email');
-    $sth->bindValue(':email',    $email,    PDO::PARAM_STR);
+    $sth = $db->prepare('SELECT id, name, is_admin, password FROM users WHERE email = :email');
+    $sth->bindValue(':email', $email, PDO::PARAM_STR);
     $sth->execute();
     $result = $sth->fetch(PDO::FETCH_ASSOC);
 
     if (password_verify($password, $result['password'])) {
       return array(
-        'id'    => $result['id'],
-        'name'  => $result['name'],
-        'email' => $result['email']
+        'id'       => $result['id'],
+        'name'     => $result['name'],
+        'is_admin' => $result['is_admin']
       );
     } else {
       echo 'ログインに失敗しました。';

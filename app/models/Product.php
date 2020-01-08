@@ -18,6 +18,18 @@ class Product extends ApplicationModel {
     $this->price = $params['price'];
   }
 
+  public function all() {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('SELECT * from products');
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+
   public function find_by_name($name) {
     try {
       $db = parent::connect_db();
@@ -83,5 +95,17 @@ class Product extends ApplicationModel {
     $select_sth = $db->query("SELECT created_at FROM products WHERE id = $this->id");
     $select_result = $select_sth->fetch(PDO::FETCH_ASSOC);
     $this->created_at = $select_result['created_at'];
+  }
+
+  public function destroy($id)
+    {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('DELETE from products where id = :id');
+      $sth->bindValue(':id', $id, PDO::PARAM_INT);
+      $sth->execute();
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
   }
 }
