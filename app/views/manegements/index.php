@@ -12,12 +12,22 @@
   >
     <? foreach ($products as $product) { ?>
       <div class="card" style="width: 17vw; color: #212529;">
-        <img src="<? echo $product['image_url'] ?>" class="card-img-top" alt="<? echo $product['name'] ?>" />
+        <img src="<?= $product['image_url'] ?>" class="card-img-top" alt="<?= $product['name'] ?>" />
         <div class="card-body">
-          <h5 class="card-title"><? echo $product['name'] ?></h5>
-          <p class="card-text"><? echo $product['price'] ?>円</p>
-          <p class="card-text"><? echo $product['description'] ?></p>
+          <h5 class="card-title"><?= $product['name'] ?></h5>
+          <p class="card-text"><?= $product['price'] ?>円</p>
+          <p class="card-text"><?= $product['description'] ?></p>
         </div>
+        <form
+          action="/kit-web-application/products/<?= $product['id'] ?>/delete"
+          method="post"
+          style="width: 100%; display: flex; margin-bottom: 24px;">
+          <input
+            class="nav-link"
+            type="submit"
+            value="削除"
+            style="color: #fff; background-color: red; border: none; border-radius: 6px; margin: auto;">
+        </form>
       </div>
     <? } ?>
   </div>

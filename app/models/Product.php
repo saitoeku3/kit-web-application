@@ -74,4 +74,16 @@ class Product extends ApplicationModel {
     $select_result = $select_sth->fetch(PDO::FETCH_ASSOC);
     $this->created_at = $select_result['created_at'];
   }
+
+  public function destroy($id)
+    {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('DELETE from products where id = :id');
+      $sth->bindValue(':id', $id, PDO::PARAM_INT);
+      $sth->execute();
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
 }
