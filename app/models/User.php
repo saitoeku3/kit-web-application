@@ -16,6 +16,7 @@ class User extends ApplicationModel {
     $this->password = password_hash($params['password'], PASSWORD_BCRYPT);
     $this->zip_code = $params['zip_code'];
     $this->address = $params['address'];
+    $this->is_admin = $params['is_admin'];
   }
   public function find_by_id($id){
     try {
@@ -35,13 +36,14 @@ class User extends ApplicationModel {
     try {
       $db = parent::connect_db();
       $insert_sth = $db->prepare(
-        'INSERT INTO users (name, email, password, zip_code, address) VALUES (:name, :email, :password, :zip_code, :address)'
+        'INSERT INTO users (name, email, password, zip_code, address, is_admin) VALUES (:name, :email, :password, :zip_code, :address, :is_admin)'
       );
       $insert_sth->bindValue(':name',     $this->name,     PDO::PARAM_STR);
       $insert_sth->bindValue(':email',    $this->email,    PDO::PARAM_STR);
       $insert_sth->bindValue(':password', $this->password, PDO::PARAM_STR);
       $insert_sth->bindValue(':zip_code', $this->zip_code, PDO::PARAM_STR);
       $insert_sth->bindValue(':address',  $this->address,  PDO::PARAM_STR);
+      $insert_sth->bindValue(':is_admin',  $this->is_admin,  PDO::PARAM_STR);
       $insert_sth->execute();
       $this->id = $db->lastInsertId();
 

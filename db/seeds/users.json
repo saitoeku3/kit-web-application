@@ -1,0 +1,12 @@
+{
+  "data": [
+    {
+      "name": "管理者",
+      "email": "admin@kit-web-application.co.jp",
+      "password": "iamadmin",
+      "zip_code": "",
+      "address": "",
+      "is_admin": true
+    }
+  ]
+}
