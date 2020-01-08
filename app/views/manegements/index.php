@@ -1,5 +1,8 @@
 <div class="container" style="margin-top: 32px;">
   <h2 style="margin-bottom: 32px;">管理画面</h2>
+  <a class="btn btn-primary" style="margin-bottom: 32px;" href="/kit-web-application/manegements/new" role="button">
+    商品を追加
+  </a>
   <div
     style="
     display: grid;

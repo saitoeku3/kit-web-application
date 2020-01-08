@@ -23,6 +23,10 @@ class ProductsController {
     echo view($title, $body, $data);
   }
 
+  public function create() {
+
+  }
+
   public function destroy() {
     $reg_result;
     $queries;

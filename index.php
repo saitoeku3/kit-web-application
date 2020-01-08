@@ -17,11 +17,13 @@ $router->map('GET',  '/carts',                  'CartsController#index');
 $router->map('POST', '/carts',                  'CartsController#create');
 $router->map('POST', '/carts/[i:id]',           'CartsController#destroy'); // DELETE
 $router->map('GET',  '/manegements',            'ManegementsController#index');
+$router->map('GET',  '/manegements/new',        'ManegementsController#new');
 $router->map('GET',  '/orders',                 'OrdersController#index');
 $router->map('GET',  '/orders/new',             'OrdersController#new');
 $router->map('POST', '/orders',                 'OrdersController#create');
 $router->map('POST', '/orders/edit',            'OrdersController#edit'); // PATCHにしたい
 $router->map('GET',  '/products/[i:id]',        'ProductsController#show');
+$router->map('POST', '/products/[i:id]',        'ProductsController#create');
 $router->map('POST', '/products/[i:id]/delete', 'ProductsController#destroy'); // DELETE
 $router->map('GET',  '/search',                 'SearchController#index');
 $router->map('GET',  '/sign-in',                'SessionsController#new');
