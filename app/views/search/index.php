@@ -3,6 +3,7 @@
   <div
     style="
     display: grid;
+    margin-bottom: 64px;
     column-gap: 56px;
     grid-template-rows: auto;
     grid-template-columns: repeat(auto-fill, 17vw);
@@ -10,14 +11,17 @@
     width: 100%;"
   >
     <? foreach ($products as $product) { ?>
-      <div class="card" style="width: 17vw;">
+      <a
+        class="card"
+        style="width: 17vw; color: #212529;"
+        href="/kit-web-application/products/<? echo $product['id'] ?>">
         <img src="<? echo $product['image_url'] ?>" class="card-img-top" alt="<? echo $product['name'] ?>" />
         <div class="card-body">
           <h5 class="card-title"><? echo $product['name'] ?></h5>
           <p class="card-text"><? echo $product['price'] ?>円</p>
           <p class="card-text"><? echo $product['description'] ?></p>
         </div>
-      </div>
+      </aclass="card">
     <? } ?>
   </div>
 </div>

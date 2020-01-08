@@ -5,7 +5,7 @@
           <a href="#" class="list-group-item"><? echo $category ?></a>
         <? }?>
     </div>
-    <img src="" class="product-img">
+    <img src="<?= $image_url ?>" class="product-img">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title"><?= $product['name'] ?></h4>
