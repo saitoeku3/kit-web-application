@@ -29,6 +29,11 @@ if (!isset($_SESSION)) {
           <input class="nav-link" type="submit" value="ログアウト" style="color: #fff; background-color: transparent; border: none; ">
         </form>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/kit-web-application/orders" style="color: #fff;">
+          注文履歴
+        </a>
+      </li>
     <? } else { ?>
       <li class="nav-item">
         <a class="nav-link" href="/kit-web-application/sign-up" style="color: #fff;">
