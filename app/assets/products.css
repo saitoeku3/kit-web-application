@@ -4,8 +4,8 @@
     }
 }
 @media screen and (min-width:768px) and ( max-width:1024px) {
-    #junre-box{
-        width: 300px;
+    #category-box{
+        width: 200px;
     }
     .wrapper{
         display: flex;
@@ -26,8 +26,8 @@
     }
 }
 @media screen and (min-width:1024px) {
-    #junre-box{
-        width: 300px;
+    #category-box{
+        width: 200px;
     }
     .wrapper{
         display: flex;

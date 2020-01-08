@@ -18,9 +18,10 @@ $router->map('POST', '/carts/[i:id]',    'CartsController#destroy'); // DELETE
 $router->map('GET',  '/orders',          'OrdersController#index');
 $router->map('GET',  '/orders/new',      'OrdersController#new');
 $router->map('POST', '/orders',          'OrdersController#create');
-$router->map('POST',  '/orders/edit',    'OrdersController#edit'); //PATCHにしたい
+$router->map('POST', '/orders/edit',     'OrdersController#edit'); //PATCHにしたい
 $router->map('GET',  '/products/[i:id]', 'ProductsController#show');
 $router->map('GET',  '/search',          'SearchController#index');
+$router->map('GET',  '/category',        'CategoryController#index');
 $router->map('GET',  '/sign-in',         'SessionsController#new');
 $router->map('POST', '/sign-in',         'SessionsController#create');
 $router->map('GET',  '/sign-up',         'RegistrationsController#new');

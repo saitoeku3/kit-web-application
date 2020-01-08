@@ -9,12 +9,8 @@ class ProductsController {
       $path = explode("/", $keys['path']); //分割処理
       $last = end($path); //最後の要素を取得
       $product = Product::find_by_id($last);
-      $data = array('id'          => $product[0]['id'],
-                    'name'        => $product[0]['name'],
-                    'description' => $product[0]['description'],
-                    'price'       => $product[0]['price'],
-                    'category'    => $product[0]['category'],
-                    'image_url'   => $product[0]['image_url']);
+      $categorys = Product::get_category();
+      $data = array('product' => $product[0],'categorys' => $categorys[0]);
       echo view($title, $body, $data);
   }
 }

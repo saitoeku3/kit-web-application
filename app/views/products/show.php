@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="list-group" id="junre-box">
+    <div class="list-group" id="category-box">
         <div class="list-group-item" style="background-color: #f5f5f5">ジャンル一覧</div>
         <? foreach ($categorys as $category) { ?>
           <a href="#" class="list-group-item"><? echo $category ?></a>
