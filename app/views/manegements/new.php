@@ -10,6 +10,10 @@
       <input type="text" name="description" class="form-control">
     </div>
     <div class="form-group">
+      <label style="margin: auto 0;">カテゴリー</label>
+      <input type="text" name="category" class="form-control">
+    </div>
+    <div class="form-group">
       <label style="margin: auto 0;">画像</label>
       <div class="custom-file">
         <input type="file" class="custom-file-input" id="customFile" accept="image/png, image/jpeg">
