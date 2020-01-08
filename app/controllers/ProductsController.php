@@ -24,7 +24,29 @@ class ProductsController {
   }
 
   public function create() {
+    echo $_POST['image_url'];
+    // if (
+    //   !isset($_POST['name']) || $_POST['name'] === '' ||
+    //   !isset($_POST['description']) || $_POST['description'] === '' ||
+    //   !isset($_POST['image_url']) || $_POST['image_url'] === '' ||
+    //   !isset($_POST['price']) || $_POST['price'] === 0
+    // ) {
+    //   header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/manegements/new', true, 302);
+    //   exit();
+    // }
 
+    // $params = array(
+    //   'name'        => $_POST['name'],
+    //   'description' => $_POST['description'],
+    //   'image_url'   => $_POST['image_url'],
+    //   'price'       => $_POST['price']
+    // );
+
+    // $product = new Product($params);
+    // $product->save();
+
+    // header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/', true, 302);
+    // exit();
   }
 
   public function destroy() {
