@@ -11,7 +11,7 @@ class ProductsController {
       $last = end($path); //最後の要素を取得
       $product = Product::find_by_id($last);
       $categorys = Product::get_category();
-      $data = array('product' => $product[0],'categorys' => $categorys[0]);
+      $data = array('product' => $product[0],'categorys' => $categorys);
       echo view($title, $body, $data);
   }
 

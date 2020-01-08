@@ -71,7 +71,7 @@ class Product extends ApplicationModel {
          $db = parent::connect_db();
          $sth = $db->prepare('select distinct category from products;');
          $sth->execute();
-         $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+         $result = $sth->fetchAll(PDO::FETCH_COLUMN);
          return $result;
        } catch (PDOException $e) {
          die('Error:' . $e->getMessage());

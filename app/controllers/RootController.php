@@ -6,7 +6,7 @@ class RootController extends ApplicationController{
   public function index() {
     $title = "トップ";
     $categorys = Product::get_category();
-    $data = array('categorys' => $categorys[0]);
+    $data = array('categorys' => $categorys);
     $body = __DIR__ . '/../views/root/index.php';
       
     echo view($title, $body,$data);
