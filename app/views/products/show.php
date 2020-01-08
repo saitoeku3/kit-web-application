@@ -6,7 +6,7 @@
         <a href="#" class="list-group-item">漫画</a>
         <a href="#" class="list-group-item">旅行</a>
     </div>
-    <img src="" class="product-img">
+    <img src="<?= $image_url ?>" class="product-img">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title"><?= $name ?></h4>
