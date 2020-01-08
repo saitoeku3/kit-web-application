@@ -55,7 +55,18 @@ class Product extends ApplicationModel {
       die('Error:' . $e->getMessage());
     }
   }
-
+  public function find_by_category($category) {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('SELECT * from products WHERE category = :category');
+      $sth->bindValue(':category', $category, PDO::PARAM_STR);
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
   public function find_by_id($id) {
     try {
       $db = parent::connect_db();
@@ -67,6 +78,17 @@ class Product extends ApplicationModel {
     } catch (PDOException $e) {
       die('Error:' . $e->getMessage());
    }
+  }
+  public function get_category(){
+      try {
+         $db = parent::connect_db();
+         $sth = $db->prepare('select distinct category from products;');
+         $sth->execute();
+         $result = $sth->fetchAll(PDO::FETCH_COLUMN);
+         return $result;
+       } catch (PDOException $e) {
+         die('Error:' . $e->getMessage());
+      }
   }
 
   public function save() {

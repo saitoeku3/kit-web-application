@@ -134,7 +134,7 @@ class OrderHistory extends ApplicationModel {
       $sth = $db->prepare('
         SELECT products.id, products.name, products.description, products.price, products.image_url
         FROM order_histories INNER JOIN products ON order_histories.product_id = products.id
-        where DATE_ADD(order_histories.created_at, INTERVAL 7 DAY) > NOW()'
+        where DATE_ADD(order_histories.created_at, INTERVAL 7 DAY) > NOW();'
       );
       $sth->execute();
       $result = $sth->fetchAll(PDO::FETCH_ASSOC);

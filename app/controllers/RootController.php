@@ -1,5 +1,6 @@
 <?
 require_once dirname(__FILE__) . "/./ApplicationController.php";
+require_once dirname(__FILE__) . "/../models/Product.php";
 require_once dirname(__FILE__) . '/../models/OrderHistory.php';
 require_once dirname(__FILE__) . '/../models/Product.php';
 
@@ -11,8 +12,9 @@ class RootController extends ApplicationController{
       : array_slice($popular_products, 0, 3);
 
     $title = "トップ";
+    $categorys = Product::get_category();
+    $data = array('products' => $products,'categorys' => $categorys);
     $body = __DIR__ . '/../views/root/index.php';
-    $data = array('products' => $products);
     echo view($title, $body, $data);
   }
 }
