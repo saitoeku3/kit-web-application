@@ -15,7 +15,7 @@ $products = "create table products (
   id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
   name VARCHAR(255) NOT NULL,
   description TEXT,
-  image_url TEXT NOT NULL,
+  image_url MEDIUMTEXT NOT NULL,
   category VARCHAR(255) NOT NULL,
   price INT UNSIGNED NOT NULL,
   created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
