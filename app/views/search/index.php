@@ -21,7 +21,7 @@
           <p class="card-text"><? echo $product['price'] ?>円</p>
           <p class="card-text"><? echo $product['description'] ?></p>
         </div>
-      </aclass="card">
+      </a>
     <? } ?>
   </div>
 </div>
