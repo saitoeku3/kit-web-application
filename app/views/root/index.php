@@ -17,32 +17,26 @@
       </div>
       <div style="width: 60vw;" >
         <h2 style="margin-bottom: 16px;">売れ筋の商品</h2>
-        <div class="card-group">
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
-          <div class="card">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-          </div>
+        <div style="
+          display: grid;
+          margin-bottom: 64px;
+          column-gap: 56px;
+          grid-template-rows: auto;
+          grid-template-columns: repeat(auto-fill, 17vw);
+          row-gap: 48px;
+          width: 100%;">
+          <? foreach ($products as $product) { ?>
+            <a class="card" style="width: 17vw; color: #212529;" href="/kit-web-application/products/<?= $product['id'] ?>">
+              <img src="<?= $product['image_url'] ?>" class="card-img-top" alt="<?= $product['name'] ?>">
+              <div class="card-body">
+                <h5 class="card-title"><?= $product['name'] ?></h5>
+                <p class="card-text"><?= $product['description'] ?></p>
+                <p class="card-text"><small class="text-muted"><?= $product['price'] ?>円</small></p>
+              </div>
+            </a>
+          <? } ?>
         </div>
       </div>
     </div>
+  </div>
 </div>
