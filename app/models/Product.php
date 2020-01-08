@@ -30,6 +30,19 @@ class Product extends ApplicationModel {
     }
   }
 
+  public function all_with_limit($count) {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('SELECT * from products LIMIT :count');
+      $sth->bindValue(':count', "$count", PDO::PARAM_INT);
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+
   public function find_by_name($name) {
     try {
       $db = parent::connect_db();
