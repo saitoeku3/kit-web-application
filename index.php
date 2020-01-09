@@ -27,6 +27,8 @@ $router->map('POST', '/orders/edit',            'OrdersController#edit'); // PAT
 $router->map('POST', '/orders/[i:id]/delete',   'OrdersController#destroy'); // DELETE
 $router->map('GET',  '/products/[i:id]',        'ProductsController#show');
 $router->map('POST', '/products',               'ProductsController#create');
+$router->map('GET',  '/products/[i:id]/edit',   'ProductsController#edit');
+$router->map('POST', '/products/[i:id]/update', 'ProductsController#update');
 $router->map('POST', '/products/[i:id]/delete', 'ProductsController#destroy'); // DELETE
 $router->map('GET',  '/profile',                'ProfileController#index');
 $router->map('POST', '/reviews',                'ReviewsController#create');

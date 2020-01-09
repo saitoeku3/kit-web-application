@@ -49,6 +49,48 @@ class ProductsController extends ApplicationController {
     exit();
   }
 
+  public function edit() {
+    $reg_result;
+    $queries;
+
+    preg_match('/\d+/', $_SERVER["REQUEST_URI"], $reg_result);
+    $id = $reg_result[0];
+    $product = Product::find_by_id($id);
+
+    $title = '編集';
+    $body = __DIR__ . '/../views/products/edit.php';
+    $data = array('product' => $product[0]);
+    echo view($title, $body, $data);
+  }
+
+  public function update() {
+    if (
+      !isset($_POST['id']) || $_POST['id'] === '' ||
+      !isset($_POST['name']) || $_POST['name'] === '' ||
+      !isset($_POST['description']) || $_POST['description'] === '' ||
+      !isset($_POST['image_url']) || $_POST['image_url'] === '' ||
+      !isset($_POST['category']) || $_POST['category'] === '' ||
+      !isset($_POST['price']) || $_POST['price'] === 0
+    ) {
+      header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/products/'.$_POST['id'].'/edit', true, 302);
+      exit();
+    }
+
+    $params = array(
+      'id'          => $_POST['id'],
+      'name'        => $_POST['name'],
+      'description' => $_POST['description'],
+      'category'    => $_POST['category'],
+      'image_url'   => $_POST['image_url'],
+      'price'       => $_POST['price']
+    );
+
+    $product = new Product($params);
+    $product->update($params);
+    header('Location: http://'.$_SERVER['HTTP_HOST'].'/kit-web-application/manegements?tab=products', true, 302);
+    exit();
+  }
+
   public function destroy() {
     $reg_result;
     $queries;

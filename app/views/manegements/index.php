@@ -33,16 +33,25 @@
             <p class="card-text"><?= $product['price'] ?>円</p>
             <p class="card-text"><?= $product['description'] ?></p>
           </div>
-          <form
-            action="/kit-web-application/products/<?= $product['id'] ?>/delete"
-            method="post"
-            style="width: 100%; display: flex; margin-bottom: 24px;">
-            <input
-              class="nav-link"
-              type="submit"
-              value="削除"
-              style="color: #fff; background-color: red; border: none; border-radius: 6px; margin: auto;">
-          </form>
+          <div style="display: flex;">
+            <form
+              action="/kit-web-application/products/<?= $product['id'] ?>/delete"
+              method="post"
+              style="width: 100%; display: flex; margin-bottom: 24px;">
+              <a
+                class="btn btn-primary"
+                style="margin-left: 32px;"
+                href="/kit-web-application/products/<?= $product['id'] ?>/edit"
+                role="button">
+                編集
+              </a>
+              <input
+                class="nav-link"
+                type="submit"
+                value="削除"
+                style="color: #fff; background-color: red; border: none; border-radius: 6px; margin: auto;">
+            </form>
+          </div>
         </div>
       <? } ?>
     </div>
