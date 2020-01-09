@@ -22,27 +22,29 @@
     </div>
 </div>
 <div class="container" style="margin-top: 32px;border-top: 1px solid #ddd;padding:12px;">
-  <? if (!$is_reviewed) { ?>
-    <form action="/kit-web-application/reviews" method="POST">
-      <input type="hidden" name="product_id" value=<? echo $product['id'] ?> >
-      <textarea rows="5" cols="50" name="comment" placeholder="商品の感想を記入してください" style="display:block;"></textarea>
-      <div class="evaluation">
-        <input id="star1" type="radio" name="rate" value="5" />
-        <label for="star1"><span class="text">最高</span>★</label>
-        <input id="star2" type="radio" name="rate" value="4" />
-        <label for="star2"><span class="text">良い</span>★</label>
-        <input id="star3" type="radio" name="rate" checked="checked" value="3" />
-        <label for="star3"><span class="text">普通</span>★</label>
-        <input id="star4" type="radio" name="rate" value="2" />
-        <label for="star4"><span class="text">悪い</span>★</label>
-        <input id="star5" type="radio" name="rate" value="1" />
-        <label for="star5"><span class="text">最悪</span>★</label>
-      </div>
-      <input type="submit" class="btn btn-primary" value="投稿する">
-    </form>
-  <? } else { ?>
-    <p>投稿済み</p>
-  <?}?>
+  <? if (isset($_SESSION['id'])) { ?>
+    <? if (!$is_reviewed) { ?>
+      <form action="/kit-web-application/reviews" method="POST">
+        <input type="hidden" name="product_id" value=<? echo $product['id'] ?> >
+        <textarea rows="5" cols="50" name="comment" placeholder="商品の感想を記入してください" style="display:block;"></textarea>
+        <div class="evaluation">
+          <input id="star1" type="radio" name="rate" value="5" />
+          <label for="star1"><span class="text">最高</span>★</label>
+          <input id="star2" type="radio" name="rate" value="4" />
+          <label for="star2"><span class="text">良い</span>★</label>
+          <input id="star3" type="radio" name="rate" checked="checked" value="3" />
+          <label for="star3"><span class="text">普通</span>★</label>
+          <input id="star4" type="radio" name="rate" value="2" />
+          <label for="star4"><span class="text">悪い</span>★</label>
+          <input id="star5" type="radio" name="rate" value="1" />
+          <label for="star5"><span class="text">最悪</span>★</label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="投稿する">
+      </form>
+    <? } else { ?>
+      <p>投稿済み</p>
+    <?} ?>
+  <? } ?>
   <? if (count($reviews) == 0) { ?>
     <p>レビューはまだありません。</p>
   <? } else { ?>

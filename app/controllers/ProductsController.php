@@ -5,7 +5,9 @@ require_once dirname(__FILE__) . '/../models/Product.php';
 
 class ProductsController extends ApplicationController {
   public function show() {
-      Parent::is_logged_in();
+      if(!isset($_SESSION)){
+        session_start();
+      }
       $title = "カート";
       $body = __DIR__ . '/../views/products/show.php';
       $keys = parse_url($_SERVER["REQUEST_URI"]); //パース処理
