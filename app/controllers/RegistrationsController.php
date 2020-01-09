@@ -50,6 +50,14 @@ class RegistrationsController extends ApplicationController{
   }
 
   public function destroy() {
-    session_destroy();
+    parent::is_logged_in();
+    $reg_result;
+    $queries;
+
+    preg_match('/\d+/', $_SERVER["REQUEST_URI"], $reg_result);
+    $id = $reg_result[0];
+    User::destroy($id);
+    header('Location: http://'.$_SERVER['SERVER_NAME'].'/kit-web-application/manegements?tab=users', true, 302);
+    exit();
   }
 }

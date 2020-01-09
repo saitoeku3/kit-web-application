@@ -67,4 +67,15 @@ class User extends ApplicationModel {
       die('Error:' . $e->getMessage());
     }
   }
+
+  public function destroy($id) {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('DELETE from users where id = :id');
+      $sth->bindValue(':id', $id, PDO::PARAM_INT);
+      $sth->execute();
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
 }

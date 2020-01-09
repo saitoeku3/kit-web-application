@@ -55,7 +55,6 @@ class ProductsController extends ApplicationController {
 
     preg_match('/\d+/', $_SERVER["REQUEST_URI"], $reg_result);
     $id = $reg_result[0];
-    echo $id;
     Product::destroy($id);
     header('Location: http://'.$_SERVER['SERVER_NAME'].'/kit-web-application/manegements', true, 302);
     exit();

@@ -50,7 +50,12 @@
   <? if ($current_tab == 'users') { ?>
     <ul class="list-group">
     <? foreach ($users as $user) { ?>
-      <li class="list-group-item"><?= $user['name'] ?></li>
+      <li class="list-group-item" style="display: flex; justify-content: space-between;">
+        <div style="margin: auto 0;"><?= $user['name'] ?></div>
+        <form action="/kit-web-application/users/<?= $user['id'] ?>/delete" method="post">
+          <input class="btn btn-danger" type="submit" value="削除" />
+        </form>
+      </li>
     <? } ?>
     </ul>
   <? } ?>

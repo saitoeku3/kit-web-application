@@ -28,13 +28,14 @@ $router->map('GET',  '/products/[i:id]',        'ProductsController#show');
 $router->map('POST', '/products',               'ProductsController#create');
 $router->map('POST', '/products/[i:id]/delete', 'ProductsController#destroy'); // DELETE
 $router->map('GET',  '/profile',                'ProfileController#index');
+$router->map('POST', '/reviews',                'ReviewsController#create');
 $router->map('GET',  '/search',                 'SearchController#index');
 $router->map('GET',  '/sign-in',                'SessionsController#new');
 $router->map('POST', '/sign-in',                'SessionsController#create');
 $router->map('GET',  '/sign-up',                'RegistrationsController#new');
 $router->map('POST', '/sign-up',                'RegistrationsController#create');
 $router->map('POST', '/sign-out',               'SessionsController#destroy'); // DELETE
-$router->map('POST', '/reviews',                'ReviewsController#create');
+$router->map('POST', '/users/[i:id]/delete',    'RegistrationsController#destroy');
 
 $match = $router->match();
 
@@ -43,7 +44,7 @@ list( $controller, $action ) = explode( '#', $match['target'] );
 if ( is_callable(array($controller, $action)) ) {
   $obj = new $controller();
   call_user_func_array(array($obj,$action), array($match['params']));
-} else if ($match['target']==''){
+} else if ($match['target']=='') {
   echo 'Error: no route was matched';
 } else {
   echo 'Error: can not call '.$controller.'#'.$action;
