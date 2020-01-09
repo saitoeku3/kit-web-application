@@ -29,7 +29,7 @@ class ManegementsController extends ApplicationController {
         $users = User::all_normal_users();
       break;
       case 'orders':
-        $orders = OrderHistory::all();
+        $orders = OrderHistory::all_parchaed();
       default:
         break;
     }

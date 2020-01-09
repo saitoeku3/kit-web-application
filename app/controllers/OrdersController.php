@@ -8,7 +8,7 @@ class OrdersController extends ApplicationController {
       $products = array();
 
       Parent::is_logged_in();
-      
+
       if (isset($_SESSION['id'])) {
         $products = OrderHistory::find_parchased_products_by_user_id($_SESSION['id']);
       }
@@ -18,7 +18,7 @@ class OrdersController extends ApplicationController {
       $data = array('products' => $products);
       echo view($title, $body, $data);
   }
-    
+
   public function new() {
       $products = array();
       $user = array();
@@ -33,19 +33,19 @@ class OrdersController extends ApplicationController {
       $body = __DIR__ . '/../views/orders/new.php';
       echo view($title, $body,$data);
   }
-    
+
   public function create() {
-      
+
       Parent::is_logged_in();
-      
+
       if (isset($_SESSION['id'])) {
         OrderHistory::give_order();
       }
       header('Location: http://192.168.64.2/kit-web-application/orders');
       exit;
   }
+
   public function edit() {
-    
     Parent::is_logged_in();
     $quantity = $_POST['quantity'];
     $product_id = $_POST['product_id'];
@@ -59,5 +59,16 @@ class OrdersController extends ApplicationController {
           $total_price += $product['price'] * $product['quantity'];
       }
       return $total_price;
+  }
+
+  public function destroy() {
+    $reg_result;
+    $queries;
+
+    preg_match('/\d+/', $_SERVER["REQUEST_URI"], $reg_result);
+    $id = $reg_result[0];
+    OrderHistory::destroy($id);
+    header('Location: http://'.$_SERVER['SERVER_NAME'].'/kit-web-application/manegements?tab=orders', true, 302);
+    exit();
   }
 }

@@ -175,6 +175,7 @@ class OrderHistory extends ApplicationModel {
       }
     }
   }
+
   public function save() {
     try {
       $db = parent::connect_db();
@@ -192,8 +193,24 @@ class OrderHistory extends ApplicationModel {
     }
   }
 
-  public function destroy($id)
-    {
+  public function all_parchaed() {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('
+        SELECT order_histories.id AS id, products.name AS product_name, users.name AS user_name from order_histories
+        INNER JOIN products ON order_histories.product_id = products.id
+        INNER JOIN users ON order_histories.user_id = users.id
+        WHERE has_parchased = true
+      ');
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+
+  public function destroy($id) {
     try {
       $db = parent::connect_db();
       $sth = $db->prepare('DELETE from order_histories where id = :id');
@@ -204,3 +221,4 @@ class OrderHistory extends ApplicationModel {
     }
   }
 }
+

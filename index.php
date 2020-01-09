@@ -23,7 +23,8 @@ $router->map('GET',  '/manegements/new',        'ManegementsController#new');
 $router->map('GET',  '/orders',                 'OrdersController#index');
 $router->map('GET',  '/orders/new',             'OrdersController#new');
 $router->map('POST', '/orders',                 'OrdersController#create');
-$router->map('POST', '/orders/edit',            'OrdersController#edit'); // PATCHにしたい
+$router->map('POST', '/orders/edit',            'OrdersController#edit'); // PATCH
+$router->map('POST', '/orders/[i:id]/delete',   'OrdersController#destroy'); // DELETE
 $router->map('GET',  '/products/[i:id]',        'ProductsController#show');
 $router->map('POST', '/products',               'ProductsController#create');
 $router->map('POST', '/products/[i:id]/delete', 'ProductsController#destroy'); // DELETE
