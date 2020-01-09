@@ -7,6 +7,13 @@
       "zip_code": "",
       "address": "",
       "is_admin": true
+    },
+    {
+      "name": "テスト",
+      "email": "test@kit-web-application.co.jp",
+      "password": "iamtest",
+      "zip_code": "",
+      "address": ""
     }
   ]
 }

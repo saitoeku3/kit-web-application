@@ -19,6 +19,18 @@ class User extends ApplicationModel {
     $this->is_admin = $params['is_admin'];
   }
 
+  public function all_normal_users() {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('SELECT * from users WHERE is_admin = false');
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+
   public function find_by_id($id) {
     try {
       $db = parent::connect_db();

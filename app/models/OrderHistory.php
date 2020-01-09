@@ -13,6 +13,18 @@ class OrderHistory extends ApplicationModel {
     $this->product_id = $params['product_id'];
   }
 
+  public function all() {
+    try {
+      $db = parent::connect_db();
+      $sth = $db->prepare('SELECT * from order_histories');
+      $sth->execute();
+      $result = $sth->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+    } catch (PDOException $e) {
+      die('Error:' . $e->getMessage());
+    }
+  }
+
   public function find_cart_products_by_user_id($user_id) {
     try {
       $db = parent::connect_db();

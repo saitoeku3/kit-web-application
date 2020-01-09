@@ -1,5 +1,17 @@
 <div class="container" style="margin-top: 32px;">
   <h2 style="margin-bottom: 32px;">管理画面</h2>
+  <ul class="nav nav-tabs" style="margin-bottom: 32px;">
+    <li class="nav-item">
+      <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'] ?>/kit-web-application/manegements?tab=products">商品管理</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'] ?>/kit-web-application/manegements?tab=users">ユーザー管理</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="http://<?= $_SERVER['HTTP_HOST'] ?>/kit-web-application/manegements?tab=orders">注文管理</a>
+    </li>
+  </ul>
+  <? if ($current_tab == 'products') { ?>
   <a class="btn btn-primary" style="margin-bottom: 32px;" href="/kit-web-application/manegements/new" role="button">
     商品を追加
   </a>
@@ -34,4 +46,12 @@
       </div>
     <? } ?>
   </div>
+  <? } ?>
+  <? if ($current_tab == 'users') { ?>
+    <ul class="list-group">
+    <? foreach ($users as $user) { ?>
+      <li class="list-group-item"><?= $user['name'] ?></li>
+    <? } ?>
+    </ul>
+  <? } ?>
 </div>
